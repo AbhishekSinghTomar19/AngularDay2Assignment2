@@ -1,0 +1,90 @@
+Q1 ->
+var longestPalindrome = function(s) {
+    let start, end, result = 0;
+    
+    for(let i=0; i < s.length; i++) {
+        let tempStart = i;
+        let tempEnd = i;
+        
+        while(s[tempEnd] === s[tempEnd+1]) tempEnd++;
+        
+        while(tempStart >= 0 && tempEnd < s.length && s[tempStart-1] == s[tempEnd+1]) {
+            tempStart--;
+            tempEnd++
+        }
+        
+        if(result < tempEnd - tempStart+1) {
+            result = tempEnd - tempStart+1;
+            start = tempStart;
+            end = tempEnd;
+        }
+    }
+    return s.substring(start, end+1);
+};
+
+Q2 ->
+let student = {
+    name: 'David Rayy',
+    sclass: 'VI',
+    rollno: '12'
+};
+
+const props = Object.keys(user);
+
+console.log(props);
+
+Q3 ->
+
+const reGroup = (list, key) => {
+    const newGroup = {};
+    list.forEach(item => {
+        const newItem = Object.assign({}, item);
+        delete newItem[key];
+        newGroup[item[key]] = newGroup[item[key]] || [];
+        newGroup[item[key]].push(newItem);
+    });
+    return newGroup;
+};
+
+let groupData = [
+  {
+    name: "vpg-10", id: 1, storage: "30 GB"
+  },
+  {
+    name: "vpg-12", id: 2, storage: "42 GB"
+  },
+  {
+    name: "vpg-14", id: 3, storage: "38 GB"
+  },
+  {
+    name: "vpg-10", id: 4, storage: "31 GB"
+  },
+  
+];
+console.log(reGroup(groupData, 'name'));
+
+Q4 ->
+var get = function (obj, path) {
+	var current = obj;
+	for (var i = 0; i < path.length; i++) {
+		if (!current[path[i]]) return null;
+		current = current[path[i]];
+	}
+	return current;
+};
+
+ const obj = {
+     a: 1,
+     b: 2,
+     c: {
+         d: 4,
+         e: {
+             i: 'Hey'
+         }
+     },
+     j: 'k'
+ } 
+
+
+var getPath = get(obj, ['c', 'e', 'i']);
+console.log(getPath);
